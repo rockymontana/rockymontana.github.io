@@ -1,0 +1,25 @@
+<table id="xhprof-summary">
+  <tbody>
+  <tr><th>Overall Summary</th></tr>
+  <tr>
+    <td>Total Incl. Wall Time (microsec):</td>
+    <td><%= @wt %> microsecs</td>
+  </tr>
+  <tr>
+    <td>Total Incl. CPU (microsecs):</td>
+    <td><%= @cpu %> microsecs</td>
+  </tr>
+  <tr>
+    <td>Total Incl. MemUse (bytes):</td>
+    <td><%= @mu %> bytes</td>
+  </tr>
+  <tr>
+    <td>Total Incl.  PeakMemUse (bytes):</td>
+    <td><%= @pmu %> bytes</td>
+  </tr>
+  <tr>
+    <td>Number of Function Calls:</td>
+    <td><%= @ct %></td>
+  </tr>
+  </tbody>
+</table>

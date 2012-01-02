@@ -1,0 +1,44 @@
+<table id="xhprof-runs" class="tablesorter">
+<thead>
+<tr>
+<th>Function Name</th>
+<th class="vwbar">Calls</th>
+<th class="vwbar">Calls%</th>
+<th class="vwbar">Incl. Wall Time<br>(microsec)</th>
+<th class="vwbar">IWall%</th><th  class="vwbar">Excl. Wall Time<br>(microsec)</th>
+<th class="vwbar">EWall%</th><th  class="vwbar">Incl. CPU<br>(microsecs)</th>
+<th class="vwbar">ICpu%</th>
+<th class="vwbar">Excl. CPU<br>(microsec)</th><th  class="vwbar">ECPU%</th>
+<th class="vwbar">MemUse<br>(bytes)</th><th  class="vwbar">IMemUse%</th>
+<th class="vwbar">Excl.<br>MemUse<br>(bytes)</th><th  class="vwbar">EMemUse%</th>
+<th class="vwbar">Incl.<br> PeakMemUse<br>(bytes)</th><th  class="vwbar">IPeakMemUse%</th>
+<th class="vwbar">Excl.<br>PeakMemUse<br>(bytes)</th>
+<th class="vwbar">EPeakMemUse%</th>
+</tr>
+</thead>
+<tbody>
+<% for name, s of @symbols: %>
+<tr>
+<td><%= name %></td>
+<td class="vbar"><%= s.ct %></td>
+<td class="vbar">0.0%</td>
+<td class="vbbar"><%= s.wall%></td>
+<td class="vbbar">100.0%</td>
+<td class="vbar"><%= s.excl_wall%></td>
+<td class="vbar">0.0%</td>
+<td class="vbar"><%= s.cpu %></td>
+<td class="vbar">100.0%</td>
+<td class="vbar"><%= s.excl_cpu %></td>
+<td class="vbar">0.0%</td>
+<td class="vbar">34,632,264</td>
+<td class="vbar">100.0%</td>
+<td class="vbar">-56,328</td>
+<td class="vbar">-0.2%</td>
+<td class="vbar">35,335,264</td>
+<td class="vbar">100.0%</td>
+<td class="vbar">0</td>
+<td class="vbar">0.0%</td>
+</tr>
+<% end %>
+</tbody>
+</table>
