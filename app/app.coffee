@@ -1,20 +1,7 @@
-#require("coffee-script")
-#require("coffee-script")
-#eco = require 'eco'
-
 XHProf = require("xhprof")
 
 App =
   init: ->
-    # Bootstrap the app
-
-    #$.get 'views/xhprof_run.eco', (tmpl) =>
-    #tmpl_data = {headers: headers, rows: rows}
-    ##keyboardInfoTable = Mustache.to_html(tmpl, tmpl_data);
-    #eco.render tmpl, tmp_data
-    #require("views/xhprof_runs")
-
-
     element = document.getElementById("drop-area")
     element.addEventListener("dragover", (event) ->
       event.stopPropagation()
