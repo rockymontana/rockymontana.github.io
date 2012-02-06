@@ -1,15 +1,15 @@
 require("coffee-script")
 stitch  = require("stitch")
-express = require("express")
 argv    = process.argv.slice(2)
+fs      = require("fs")
 
 package = stitch.createPackage(
-  # Specify the paths you want Stitch to automatically bundle up
   paths: [
+    __dirname + "/node_modules/backbone"
+    __dirname + "/node_modules/underscore"
     __dirname + "/app"
   ]
 
-  # Specify your base libraries
   dependencies: [
      __dirname + '/lib/jquery.min.js'
      __dirname + '/lib/jquery-ui/ui/jquery.ui.core.js'
@@ -18,14 +18,9 @@ package = stitch.createPackage(
      __dirname + '/lib/number_format.js'
   ]
 )
-app = express.createServer()
 
-app.configure ->
-  app.set "views", __dirname + "/views"
-  app.use app.router
-  app.use express.static(__dirname + "/public")
-  app.get "/application.js", package.createServer()
-
-port = argv[0] or process.env.PORT or 9294
-console.log "Starting server on port: #{port}"
-app.listen port
+package.compile (err, source) ->
+  #fs.writeFile 'package.js', source, (err) ->
+  fs.writeFile 'public/application.js', source, (err) ->
+    throw err if err
+    console.log 'Compiled package.js'
