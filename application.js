@@ -22794,20 +22794,14 @@ true;return this};m.prototype.value=function(){return this._wrapped}}).call(this
 
 }).call(this);
 }, "app": function(exports, require, module) {(function() {
-  var App, AppRouter, XHProf;
-
-  AppRouter = require("approuter");
+  var App, XHProf;
 
   XHProf = require("xhprof");
 
-  console.dir(AppRouter);
-
   App = {
     init: function() {
-      var element, router,
+      var element,
         _this = this;
-      router = new AppRouter;
-      console.log(router);
       element = document.getElementById("drop-area");
       element.addEventListener("dragover", function(event) {
         event.stopPropagation();
@@ -22857,6 +22851,8 @@ true;return this};m.prototype.value=function(){return this._wrapped}}).call(this
       xhprof_obj = unserialize(file_contents);
       xhprof = new XHProf(xhprof_obj);
       xhprof_data = xhprof.computeFlatInfo();
+      console.log('wtf');
+      console.log(xhprof_data);
       totals = {};
       _ref = xhprof.getTotals();
       for (metric in _ref) {
@@ -22917,48 +22913,6 @@ true;return this};m.prototype.value=function(){return this._wrapped}}).call(this
   module.exports = AppRouter;
 
 }).call(this);
-}, "models/user": function(exports, require, module) {(function() {
-  var Usrr;
-
-  Usrr = (function() {
-
-    function Usrr() {}
-
-    return Usrr;
-
-  })();
-
-  module.exports = Usrr;
-
-}).call(this);
-}, "models/usrr": function(exports, require, module) {(function() {
-  var Usrr;
-
-  Usrr = (function() {
-
-    function Usrr() {}
-
-    return Usrr;
-
-  })();
-
-  module.exports = User;
-
-}).call(this);
-}, "models/wtf": function(exports, require, module) {(function() {
-  var Wtf;
-
-  Wtf = (function() {
-
-    function Wtf() {}
-
-    return Wtf;
-
-  })();
-
-  module.exports = Wtf;
-
-}).call(this);
 }, "views/xhprof/runs": function(exports, require, module) {module.exports = function(__obj) {
   if (!__obj) __obj = {};
   var __out = [], __capture = function(callback) {
@@ -23010,14 +22964,22 @@ true;return this};m.prototype.value=function(){return this._wrapped}}).call(this
         __out.push('</td>\n<td class="vbar">');
         __out.push(__sanitize(s.ct));
         __out.push('</td>\n<td class="vbar">0.0%</td>\n<td class="vbbar">');
-        __out.push(__sanitize(s.wall));
+        __out.push(__sanitize(s.wt));
         __out.push('</td>\n<td class="vbbar">100.0%</td>\n<td class="vbar">');
-        __out.push(__sanitize(s.excl_wall));
+        __out.push(__sanitize(s.excl_wt));
         __out.push('</td>\n<td class="vbar">0.0%</td>\n<td class="vbar">');
         __out.push(__sanitize(s.cpu));
         __out.push('</td>\n<td class="vbar">100.0%</td>\n<td class="vbar">');
         __out.push(__sanitize(s.excl_cpu));
-        __out.push('</td>\n<td class="vbar">0.0%</td>\n<td class="vbar">34,632,264</td>\n<td class="vbar">100.0%</td>\n<td class="vbar">-56,328</td>\n<td class="vbar">-0.2%</td>\n<td class="vbar">35,335,264</td>\n<td class="vbar">100.0%</td>\n<td class="vbar">0</td>\n<td class="vbar">0.0%</td>\n</tr>\n');
+        __out.push('</td>\n<td class="vbar">0.0%</td>\n<td class="vbar">');
+        __out.push(__sanitize(s.mu));
+        __out.push('</td>\n<td class="vbar">100.0%</td>\n<td class="vbar">');
+        __out.push(__sanitize(s.excl_mu));
+        __out.push('</td>\n<td class="vbar">-0.2%</td>\n<td class="vbar">');
+        __out.push(__sanitize(s.pmu));
+        __out.push('</td>\n<td class="vbar">100.0%</td>\n<td class="vbar">');
+        __out.push(__sanitize(s.excl_pmu));
+        __out.push('</td>\n<td class="vbar">0.0%</td>\n</tr>\n');
       }
     
       __out.push('\n</tbody>\n</table>\n');
