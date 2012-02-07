@@ -22,21 +22,21 @@
 <td><%= name %></td>
 <td class="vbar"><%= s.ct %></td>
 <td class="vbar">0.0%</td>
-<td class="vbbar"><%= s.wall%></td>
+<td class="vbbar"><%= s.wt %></td>
 <td class="vbbar">100.0%</td>
-<td class="vbar"><%= s.excl_wall%></td>
+<td class="vbar"><%= s.excl_wt %></td>
 <td class="vbar">0.0%</td>
 <td class="vbar"><%= s.cpu %></td>
 <td class="vbar">100.0%</td>
 <td class="vbar"><%= s.excl_cpu %></td>
 <td class="vbar">0.0%</td>
-<td class="vbar">34,632,264</td>
+<td class="vbar"><%= s.mu %></td>
 <td class="vbar">100.0%</td>
-<td class="vbar">-56,328</td>
+<td class="vbar"><%= s.excl_mu %></td>
 <td class="vbar">-0.2%</td>
-<td class="vbar">35,335,264</td>
+<td class="vbar"><%= s.pmu %></td>
 <td class="vbar">100.0%</td>
-<td class="vbar">0</td>
+<td class="vbar"><%= s.excl_pmu %></td>
 <td class="vbar">0.0%</td>
 </tr>
 <% end %>
