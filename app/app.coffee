@@ -13,10 +13,7 @@ App =
       e.preventDefault()
 
       files = e.dataTransfer.files
-      console.dir this
       @handleFiles(files)
-      for f in files
-        console.log(f)
     , false)
 
   noopHandler: (e) ->
@@ -48,12 +45,9 @@ App =
     xhprof_obj = unserialize(file_contents)
     xhprof = new XHProf(xhprof_obj)
     xhprof_data = xhprof.computeFlatInfo()
-
     totals = {}
     for metric, total of xhprof.getTotals()
       totals[metric] = @numberFormat(total)
-
-    console.log totals
 
     # Render eco template for runs summary.
     summary_template = require("views/xhprof/summary")

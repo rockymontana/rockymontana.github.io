@@ -18,8 +18,8 @@ class XHProf
 
   getCallCount: () ->
     call_count = 0
-    for symbol in @data
-      call_count += symbol['ct']
+    for symbol, metrics of @data
+      call_count += metrics['ct']
     return call_count
 
   # Takes a parent/child function name encoded as
@@ -29,9 +29,7 @@ class XHProf
     ret = parent_child.split "==>"
 
     # Return if both parent and child are set
-    return ret if ret[1]?
-
-    return [null, ret[0]]
+    if ret[1]? then ret else [null, ret[0]]
 
   getMetrics: (xhprof_data) ->
     # get list of valid metrics
