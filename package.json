@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
     "coffee-script": "~1.2.0",
-    "stitch": "~0.3.2",
+    "backbone": "0.9.1",
+    "stitch": "~0.3.3",
     "express": "~2.5.0",
     "eco": "1.1.0-rc-3"
   }

@@ -1,6 +1,6 @@
-<table id="xhprof-summary">
+<table id="xhprof-summary" cellspacing='0'>
   <tbody>
-  <tr><th>Overall Summary</th></tr>
+  <tr><th colspan=2>Overall Summary</th></tr>
   <tr>
     <td>Total Incl. Wall Time (microsec):</td>
     <td><%= @wt %> microsecs</td>

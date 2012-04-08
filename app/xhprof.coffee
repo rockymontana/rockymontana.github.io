@@ -10,6 +10,8 @@ class XHProf
       pmu: ["PMUse", "bytes", "peak memory usage"],
       samples: ["Samples", "samples", "cpu time"]
     }
+    @overall_totals = {ct: 0, wt: 0, ut: 0, st: 0, cpu: 0, mu: 0, pmu: 0, samples: 0}
+
 
   getTotals: ->
     @totals = @data['main()']
@@ -21,6 +23,23 @@ class XHProf
     for symbol, metrics of @data
       call_count += metrics['ct']
     return call_count
+
+  getPercentage: (symbol_value, metric) ->
+    switch metric
+      when "excl_wt"
+        metric = "wt"
+      when "excl_cpu"
+        metric = "cpu"
+      when "excl_mu"
+        metric = "mu"
+      when "excl_pmu"
+        metric = "pmu"
+
+    (100 * (symbol_value / @overall_totals[metric])).toFixed(2)
+
+  getFlattenedData: ->
+    @flat_info = @computeFlatInfo() unless @flat_info?
+    @flat_info
 
   # Takes a parent/child function name encoded as
   # "a==>b" and returns array("a", "b").
@@ -60,7 +79,7 @@ class XHProf
         return
 
       if !symbol_tab[child]?
-        symbol_tab[child] = {ct: info["ct"]}
+        symbol_tab[child] = {symbol: child, ct: info["ct"]}
         for metric in metrics
           symbol_tab[child][metric] = info[metric]
       else
@@ -73,34 +92,38 @@ class XHProf
 
     return symbol_tab
 
-  computeFlatInfo: () ->
+  computeFlatInfo: ->
     metrics = @getMetrics(@data)
-    overall_totals = {ct: 0, wt: 0, ut: 0, st: 0, cpu: 0, mu: 0, pmu: 0, samples: 0}
 
     # Compute inclusive times for each function.
     symbol_tab = @computeInclusiveTimes(@data)
 
     # Total metric value is the metric value for "main()".
     for metric in metrics
-      overall_totals[metric] = symbol_tab["main()"][metric]
+      @overall_totals[metric] = symbol_tab["main()"][metric]
 
     # Initialize exclusive (self) metric value to inclusive metric value to start with.
     # In the same pass, also add up the total number of function calls.
     for symbol, info of symbol_tab
       for metric in metrics
         symbol_tab[symbol]["excl_#{metric}"] = symbol_tab[symbol][metric]
+
       # Keep track of total number of calls.
-      overall_totals["ct"] += info["ct"]
+      @overall_totals["ct"] += info["ct"]
 
-    # Adjust exclusive times by deducting inclusive time of children.
-    for parent_child, info of @data
-      [parent, child] = @parseParentChild(parent_child)
+    return @adjustParentChildInfo(symbol_tab, metrics)
 
-      if parent?
-        for metric in metrics
-          # make sure the parent exists hasn't been pruned.
-          if symbol_tab[parent]?
-            symbol_tab[parent]["excl_#{metric}"] -= info[metric]
-    return symbol_tab
+  # Adjust exclusive times by deducting inclusive time of children.
+  adjustParentChildInfo: (symbol_tab, metrics) ->
+     for parent_child, info of @data
+       [parent, child] = @parseParentChild(parent_child)
+
+       if parent?
+         for metric in metrics
+           # make sure the parent exists hasn't been pruned.
+           if symbol_tab[parent]?
+             symbol_tab[parent]["excl_#{metric}"] -= info[metric]
+     return symbol_tab
+
 
 module.exports = XHProf

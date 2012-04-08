@@ -1,44 +1,50 @@
-<table id="xhprof-runs" class="tablesorter">
+<table id="xhprof-runs" class="tablesort">
 <thead>
-<tr>
-<th>Function Name</th>
-<th class="vwbar">Calls</th>
-<th class="vwbar">Calls%</th>
-<th class="vwbar">Incl. Wall Time<br>(microsec)</th>
-<th class="vwbar">IWall%</th><th  class="vwbar">Excl. Wall Time<br>(microsec)</th>
-<th class="vwbar">EWall%</th><th  class="vwbar">Incl. CPU<br>(microsecs)</th>
-<th class="vwbar">ICpu%</th>
-<th class="vwbar">Excl. CPU<br>(microsec)</th><th  class="vwbar">ECPU%</th>
-<th class="vwbar">MemUse<br>(bytes)</th><th  class="vwbar">IMemUse%</th>
-<th class="vwbar">Excl.<br>MemUse<br>(bytes)</th><th  class="vwbar">EMemUse%</th>
-<th class="vwbar">Incl.<br> PeakMemUse<br>(bytes)</th><th  class="vwbar">IPeakMemUse%</th>
-<th class="vwbar">Excl.<br>PeakMemUse<br>(bytes)</th>
-<th class="vwbar">EPeakMemUse%</th>
-</tr>
+  <tr>
+    <th id="fn" class="sort"><a href="#">Function Name</a></th>
+    <th id="ct" class="vwbar sort"><a href="#">Calls</a></th>
+    <th class="vwbar">Calls%</th>
+    <th id="wt" class="vwbar sort"><a href="#">Incl. Wall Time<br>(microsec)</a></th>
+    <th class="vwbar">IWall%</th>
+    <th id="excl_wt" class="vwbar sort"><a href="#">Excl. Wall Time<br>(microsec)</a></th>
+    <th class="vwbar">EWall%</th>
+    <th id="cpu" class="vwbar sort"><a href="#">Incl. CPU<br>(microsecs)</a></th>
+    <th class="vwbar">ICpu%</th>
+    <th id="excl_cpu" class="vwbar sort"><a href="#">Excl. CPU<br>(microsec)</a></th>
+    <th class="vwbar">ECPU%</th>
+    <th id="mu"class="vwbar sort"><a href="#">MemUse<br>(bytes)</a></th>
+    <th class="vwbar">IMemUse%</th>
+    <th id="excl_mu" class="vwbar sort"><a href="#">Excl.<br>MemUse<br>(bytes)</a></th>
+    <th class="vwbar">EMemUse%</th>
+    <th id="pmu" class="vwbar sort"><a href="#">Incl.<br> PeakMemUse<br>(bytes)</a></th>
+    <th class="vwbar">IPeakMemUse%</th>
+    <th id="excl_pmu" class="vwbar sort"><a href="#">Excl.<br>PeakMemUse<br>(bytes)</a></th>
+    <th class="vwbar">EPeakMemUse%</th>
+  </tr>
 </thead>
 <tbody>
-<% for name, s of @symbols: %>
-<tr>
-<td><%= name %></td>
-<td class="vbar"><%= s.ct %></td>
-<td class="vbar">0.0%</td>
-<td class="vbbar"><%= s.wt %></td>
-<td class="vbbar">100.0%</td>
-<td class="vbar"><%= s.excl_wt %></td>
-<td class="vbar">0.0%</td>
-<td class="vbar"><%= s.cpu %></td>
-<td class="vbar">100.0%</td>
-<td class="vbar"><%= s.excl_cpu %></td>
-<td class="vbar">0.0%</td>
-<td class="vbar"><%= s.mu %></td>
-<td class="vbar">100.0%</td>
-<td class="vbar"><%= s.excl_mu %></td>
-<td class="vbar">-0.2%</td>
-<td class="vbar"><%= s.pmu %></td>
-<td class="vbar">100.0%</td>
-<td class="vbar"><%= s.excl_pmu %></td>
-<td class="vbar">0.0%</td>
-</tr>
+<% for s in @symbols: %>
+  <tr>
+    <td><a href="#symbol/<%= s.symbol %>"><%= s.symbol %></a></td>
+    <td class="vbar"><%= s.ct %></td>
+    <td class="vbar"><%= @per(s.ct, 'ct') %>%</td>
+    <td class="vbbar"><%= s.wt %></td>
+    <td class="vbar"><%= @per(s.wt, 'wt') %>%</td>
+    <td class="vbar"><%= s.excl_wt %></td>
+    <td class="vbar"><%= @per(s.excl_wt, 'excl_wt') %>%</td>
+    <td class="vbar"><%= s.cpu %></td>
+    <td class="vbar"><%= @per(s.cpu, 'cpu') %>%</td>
+    <td class="vbar"><%= s.excl_cpu %></td>
+    <td class="vbar"><%= @per(s.excl_cpu, 'excl_cpu') %>%</td>
+    <td class="vbar"><%= s.mu %></td>
+    <td class="vbar"><%= @per(s.mu, 'mu') %>%</td>
+    <td class="vbar"><%= s.excl_mu %></td>
+    <td class="vbar"><%= @per(s.excl_mu, 'excl_mu') %>%</td>
+    <td class="vbar"><%= s.pmu %></td>
+    <td class="vbar"><%= @per(s.pmu, 'pmu') %>%</td>
+    <td class="vbar"><%= s.excl_pmu %></td>
+    <td class="vbar"><%= @per(s.excl_pmu, 'excl_pmu') %>%</td>
+  </tr>
 <% end %>
 </tbody>
 </table>

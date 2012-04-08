@@ -1,0 +1,51 @@
+<table>
+<tr bgcolor="#bdc7d8" align=right>
+  <th align=left><nobr><a href="/xhprof/xhprof_html/?run=1&symbol=PDOStatement%3A%3Aexecute&sort=fn&source=sum">Function Name</a></th>
+  <th class="vwbar"><nobr><a href="/xhprof/xhprof_html/?run=1&symbol=PDOStatement%3A%3Aexecute&sort=ct&source=sum">Calls</a></th>
+  <th class="vwbar"><nobr>Calls%</th>
+  <th class="vwbar"><nobr><a href="/xhprof/xhprof_html/?run=1&symbol=PDOStatement%3A%3Aexecute&sort=wt&source=sum">Incl. Wall Time<br>(microsec)</a></th>
+  <th class="vwbar"><nobr>IWall%</th>
+  <th class="vwbar"><nobr><a href="/xhprof/xhprof_html/?run=1&symbol=PDOStatement%3A%3Aexecute&sort=cpu&source=sum">Incl. CPU<br>(microsecs)</a></th>
+  <th class="vwbar"><nobr>ICpu%</th>
+  <th class="vwbar"><nobr><a href="/xhprof/xhprof_html/?run=1&symbol=PDOStatement%3A%3Aexecute&sort=mu&source=sum">Incl.<br>MemUse<br>(bytes)</a></th>
+  <th class="vwbar"><nobr>IMemUse%</th>
+  <th class="vwbar"><nobr><a href="/xhprof/xhprof_html/?run=1&symbol=PDOStatement%3A%3Aexecute&sort=pmu&source=sum">Incl.<br> PeakMemUse<br>(bytes)</a></th>
+  <th class="vwbar"><nobr>IPeakMemUse%</th>
+</tr>
+<tr bgcolor='#e0e0ff'>
+  <td>Current Function</td>
+</tr>
+<tr>
+<td>
+<a href=''>PDOStatement::execute</a>
+</td>
+<td class="vbar">122,846</td>
+<td class="vbar">88.0%</td>
+<td class="vbbar">1,286,883,653</td>
+<td class="vbbar">17.2%</td>
+<td class="vbar">8,092,498</td>
+<td class="vbar">0.6%</td>
+<td class="vbar">56,471,276</td>
+<td class="vbar">0.2%</td>
+<td class="vbar">45,234,932</td>
+<td class="vbar">0.1%</td>
+</tr>
+<tr bgcolor='#ffffff'><td style='text-align:right;color:blue'>Exclusive Metrics  for Current Function</td><td  class="vbar"></td><td  class="vbar"></td><td type='Child' metric='wt'  class="vbbar">1,286,883,653</td>
+<td type='Child' metric='wt'  class="vbbar">100.0%</td>
+<td type='Child' metric='cpu'  class="vbar">8,092,498</td>
+<td type='Child' metric='cpu'  class="vbar">100.0%</td>
+<td type='Child' metric='mu'  class="vbar">56,471,276</td>
+<td type='Child' metric='mu'  class="vbar">100.0%</td>
+<td type='Child' metric='pmu'  class="vbar">45,234,932</td>
+<td type='Child' metric='pmu'  class="vbar">100.0%</td>
+</tr><tr bgcolor='#e0e0ff'><td><b><i><center>Parent function</center></i></b></td></tr><tr><td><a href="/xhprof/xhprof_html/?run=1&symbol=DatabaseStatementBase%3A%3Aexecute&sort=excl_wt&source=sum">DatabaseStatementBase::execute</a></td><td type='Parent' metric='ct'  class="vbar">122,846</td>
+<td type='Parent' metric='ct'  class="vbar">100.0%</td>
+<td type='Parent' metric='wt'  class="vbbar">1,286,883,653</td>
+<td type='Parent' metric='wt'  class="vbbar">100.0%</td>
+<td type='Parent' metric='cpu'  class="vbar">8,092,498</td>
+<td type='Parent' metric='cpu'  class="vbar">100.0%</td>
+<td type='Parent' metric='mu'  class="vbar">56,471,276</td>
+<td type='Parent' metric='mu'  class="vbar">100.0%</td>
+<td type='Parent' metric='pmu'  class="vbar">45,234,932</td>
+<td type='Parent' metric='pmu'  class="vbar">100.0%</td>
+</tr></table>
