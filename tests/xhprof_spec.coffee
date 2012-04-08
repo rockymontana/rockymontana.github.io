@@ -1,4 +1,4 @@
-XHProf = require('../app/xhprof.coffee')
+XHProf = require('../app/xhprof')
 
 xhprof_data = {
   "function_two()=:function_three": {
